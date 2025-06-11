@@ -19,6 +19,7 @@ Ce script permet de **harmoniser les noms d'équipes** qui peuvent varier selon 
 
 ```bash
 pip install pandas fuzzywuzzy  
+```
 
 ---
 
