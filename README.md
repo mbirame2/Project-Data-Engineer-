@@ -1,4 +1,4 @@
-# � Football Team Name Standardization 🧹
+# ⚽ Monaco Test technique (Tache 1): Football Team Name Standardization 🧹
 
 *Un script pour nettoyer et standardiser les noms d'équipes de football provenant de différentes sources*
 
