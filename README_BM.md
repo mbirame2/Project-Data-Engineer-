@@ -1,5 +1,5 @@
 
-# README_BM.md
+
 
 # ⚽ Monaco Test technique (Tache 2): Projet ETL StatsBomb avec Apache Airflow et Docker 🐳
 
@@ -62,7 +62,7 @@ Ouvrir dans un navigateur :
 Login : `airflow` / `airflow` 🔐
 
 4. **Déclencher et monitorer le DAG** `statsbomb_etl_pipeline`  
-- Le DAG est configuré pour s’exécuter toutes les 5 minutes ⏲️  
+- Le DAG est configuré pour s’exécuter toutes les 10 minutes ⏲️  
 - Visualiser les logs des tâches dans l’UI Airflow 📊
 
 ---
@@ -87,15 +87,37 @@ Login : `airflow` / `airflow` 🔐
 
 ---
 
+---
+
+## 🛠️ Fonctionnement du code ETL
+
+Le script principal `data_pipeline_BM.py` qui se trouve dans le repertoire `etl` suit les étapes suivantes :
+
+### 1. 🔍 Ingestion (`ingestion.py`)
+- Charge les fichiers `.json` de données brutes se trouvant dans le repertoire parent (ex: `data/events/15946.json`)
+- Transforme les données JSON en un **DataFrame Pandas**
+
+### 2. 🧹 Transformation (`transformation.py`)
+- Nettoie les données : suppression de colonnes inutiles, formatage, gestion des valeurs manquantes
+- Calcule des **KPIs football** comme :
+  - 🔁 Précision des passes
+  - 🔢 Taux de conversion des tirs
+  - 🔄 Possession du ballon, etc.
+
+### 3. 💾 Chargement (`loading.py`)
+- Enregistre les résultats transformés dans une base de données **SQLite**
+
+---
+
 ## 🛠️ Resultat
 
 - Les resultats de chaque operation du DAG Configure :
 ![image](images/result.png)
-- Les tests qui ont ete faites :  
+- Les tests qui ont ete faits :  
 ![image](images/test.png)
 - Les containers docker :  
 ![image](images/docker.png)
-- Page d'accueil :  
+- Page d'accueil d’Apache Airflow:  
 ![image](images/home.png)
 ---
 
