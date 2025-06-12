@@ -91,11 +91,11 @@ Login : `airflow` / `airflow` 🔐
 
 - Les resultats de chaque operation du DAG Configure :
 ![image](images/result.png)
-- Les tests qui ont ete faites :  
+- Les tests qui ont ete faits :  
 ![image](images/test.png)
 - Les containers docker :  
 ![image](images/docker.png)
-- Page d'accueil :  
+- Page d'accueil d’Apache Airflow:  
 ![image](images/home.png)
 ---
 
