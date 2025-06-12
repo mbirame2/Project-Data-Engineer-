@@ -15,10 +15,24 @@ Ce script permet de **harmoniser les noms d'équipes** qui peuvent varier selon 
 
 ---
 
-## 📦 Dépendances
+## 📦 Dépendances & Exécution
+
+1. **Cloner le dépôt**
+
+```bash
+git clone https://github.com/mbirame2/test_technique/tree/taskone
+```
+
+2. **Installation dépendances**
 
 ```bash
 pip install pandas fuzzywuzzy  
+```
+
+3. **Tester le script**
+
+```bash
+python team_name_cleaning_BM.py  
 ```
 
 ---
