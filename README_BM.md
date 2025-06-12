@@ -111,9 +111,9 @@ Le script principal `data_pipeline_BM.py` qui se trouve dans le repertoire `etl`
 
 ## 🛠️ Resultat
 
-- Les resultats de chaque operation du DAG Configure :
+- Les resultats des operations du DAG Configure :
 ![image](images/result.png)
-- Les tests qui ont ete faits :  
+- Les tests qui ont été faits :  
 ![image](images/test.png)
 - Les containers docker :  
 ![image](images/docker.png)
