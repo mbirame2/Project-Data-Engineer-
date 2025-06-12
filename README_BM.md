@@ -1,7 +1,7 @@
 
-# README_XX.md
+# README_BM.md
 
-# ⚽ Projet ETL StatsBomb avec Apache Airflow et Docker 🐳
+# ⚽ Monaco Test technique (Tache 2): Projet ETL StatsBomb avec Apache Airflow et Docker 🐳
 
 ---
 
@@ -28,11 +28,9 @@ Le workflow est orchestré avec Apache Airflow, déployé dans des containers Do
 ## 📝 Choix techniques
 
 - Utilisation de **Docker Compose** pour faciliter le déploiement local complet (Airflow + Postgres + ETL).  
-- **LocalExecutor** d’Airflow pour une orchestration simple sur une seule machine.  
-- **DockerOperator** dans Airflow pour isoler l’exécution ETL dans un container dédié, garantissant la reproductibilité et l’isolation des dépendances.  
 - Base SQLite légère pour la persistance des KPI, facile à consulter et copier hors du container.  
 - Gestion des connexions Airflow via variables d’environnement dans Docker Compose pour simplifier la configuration.  
-- Planification du DAG en mode cron (ex: toutes les 5 minutes) pour un monitoring et une exécution régulière. ⏳
+- Planification du DAG en mode cron (ex: toutes les 10 minutes) pour un monitoring et une exécution régulière. ⏳
 
 ---
 
@@ -48,43 +46,22 @@ Le workflow est orchestré avec Apache Airflow, déployé dans des containers Do
 1. **Cloner le dépôt**
 
 ```bash
-git clone <url-du-projet>
-cd <nom-du-projet>
+git clone https://github.com/mbirame2/test_technique/tree/tasktwo
 ```
 
-2. **Construire l’image ETL**
+2. **Démarrer la stack**
 
 ```bash
-docker-compose build etl
+docker compose  up -d
 ```
 
-3. **Démarrer la stack**
-
-```bash
-docker-compose up -d
-```
-
-4. **Initialiser la base de données Airflow** (à faire une seule fois)
-
-```bash
-docker-compose run airflow-webserver airflow db init
-docker-compose run airflow-webserver airflow users create \
-    --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com
-```
-
-5. **Lancer les services**
-
-```bash
-docker-compose start airflow-webserver airflow-scheduler postgres
-```
-
-6. **Accéder à l’interface Airflow**
+3. **Accéder à l’interface Airflow**
 
 Ouvrir dans un navigateur :  
 [http://localhost:8080](http://localhost:8080)  
-Login : `admin` / `admin` 🔐
+Login : `airflow` / `airflow` 🔐
 
-7. **Déclencher et monitorer le DAG** `statsbomb_etl_pipeline`  
+4. **Déclencher et monitorer le DAG** `statsbomb_etl_pipeline`  
 - Le DAG est configuré pour s’exécuter toutes les 5 minutes ⏲️  
 - Visualiser les logs des tâches dans l’UI Airflow 📊
 
@@ -99,17 +76,33 @@ Login : `admin` / `admin` 🔐
 │   ├── ingestion.py
 │   ├── transformation.py
 │   ├── loading.py
-│   └── data_pipeline_BM.py
+│   ├── data_pipeline_BM.py
+│   └── utils.py
 ├── data/                # Données statiques ou d’exemple (JSON)
-├── Dockerfile           # Image custom pour le pipeline ETL
 ├── docker-compose.yml   # Orchestration des containers
 ├── requirements.txt     # Dépendances Python
-└── README_XX.md         # Ce fichier
+└── README_BM.md         # Ce fichier
+└── README.md            # Fichier pour l affichage sur github
 ```
 
 ---
 
-## 🛠️ Debug & Conseils
+## 🛠️ Resultat
+
+- Les resultats de chaque operation du DAG Configure :
+![image](images/result.png)
+- Les tests qui ont ete faites :  
+![image](images/test.png)
+- Les containers docker :  
+![image](images/docker.png)
+- Page d'accueil :  
+![image](images/home.png)
+---
+
+
+---
+
+## 🛠️ Debug
 
 - Pour accéder à la base SQLite générée, récupérer le fichier `.db` dans le container ETL via `docker cp`.  
 - Pour afficher les tables SQLite :  
@@ -122,4 +115,3 @@ Login : `admin` / `admin` 🔐
 
 ---
 
-N’hésitez pas à me demander si vous souhaitez un exemple plus complet ou un fichier adapté à votre besoin ! 😊
