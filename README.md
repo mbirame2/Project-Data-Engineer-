@@ -1,7 +1,7 @@
 
 
 
-# ⚽ Monaco Test technique (Tache 2): Projet ETL StatsBomb avec Apache Airflow et Docker 🐳
+# ⚽ : Projet ETL StatsBomb avec Apache Airflow et Docker 🐳
 
 ---
 
